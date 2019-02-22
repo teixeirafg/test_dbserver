@@ -26,7 +26,8 @@ E("prossigo com esse produto do carrinho para o Checkout") do
 end
 
 Entao("eu realizo o cadastro") do
-  page.find(:css, '#email_create').send_keys('okasjdajsdo1uh@mailinator.com')
+  @email = page.find(:css, '#email_create').send_keys(rand(1..100000).to_s + '_teste_aut_fgt@mailinator.com')
+  @email = @email.value
   page.find(:css, '#SubmitCreate').click
   page.find(:css, '#id_gender1').click
   page.find(:css, '#customer_firstname').send_keys ('Teste')
@@ -71,4 +72,5 @@ E("finalizo a compra com as informações necessárias") do
     element if element.visible?
   }
   page.find(:css, '#cart_navigation > button').click
+  puts "Email utilizado: #{@email}"
 end
